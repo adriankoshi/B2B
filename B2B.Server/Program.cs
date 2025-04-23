@@ -1,4 +1,4 @@
-using B2B.Server.Data;
+﻿using B2B.Server.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -71,14 +71,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-
-app.UseAuthorization();
-
 app.UseCors();
 
-app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapControllers();
 app.MapFallbackToFile("/index.html");
 
 app.Run();
+
